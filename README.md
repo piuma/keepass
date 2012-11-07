@@ -6,6 +6,7 @@ Command line interface to work with KeePass database file. The usage mode is ins
 Command line
 ============
 
+```shell
 $ ./keepass.pl --help
 keepass - commandline tool compatible with KeePassX
 Usage: keepass [OPTION] [NAME]
@@ -20,3 +21,4 @@ Options:
   -v, --verbose              print more information (can be repeated)
   -h, --help                 display this help and exit
   -V, --version              output version information and exit
+```
