@@ -7,7 +7,7 @@ use String::Random;
 use File::KeePass 2.03;      # non-core, >=v0.03 needed due critical bug fixes
 use Clipboard;
 
-use constant DEFAULT_FILE => 'test.kdb'; # default file
+use constant DEFAULT_FILE => '~/.keepassx.kdb'; # default file
 
 #
 # main
@@ -20,6 +20,22 @@ my $oKeePass = File::KeePass->new;
 my $sPassPhrase = '';
 
 options();
+
+if ($fCreateDb) {
+    if (-e $sFile) {
+	print "$sFile already exists\n";
+	exit 1;
+    }
+
+    $oKeePass->add_group({title => 'Internet', });
+
+    $oKeePass->add_group({title => 'eMail', });
+
+    $oKeePass->unlock;
+    $oKeePass->save_db($sFile, readPassphrase());
+
+    exit 1;
+}
 
 msg("open file: $sFile");
 
@@ -98,6 +114,7 @@ sub options () {
 		   'E|echo' => \$fEcho,
 #		   'o|output=s' => \$fFileOutput,
 		   'a|add' => \$fAddEntry,
+		   'c|createdb' => \$fCreateDb,
 		   'h|?|help' => \$fHelp,
 		   'v|verbose' => \$fVerbose,
 		   'V|version' => \$fVersion)
@@ -284,7 +301,7 @@ sub readPassphrase() {
 sub printLongList() { # $oKeePass
     my ($oKeePass) = shift;
 
-    #print Dumper $oKeePass; # passwords are locked
+    # print Dumper $oKeePass; # passwords are locked
 
     print "=" x 30 . "\n";
 
@@ -392,6 +409,7 @@ Options:
   -p, --password             emit password of listed account
   -E, --echo                 force echoing of entry to stdout
   -a, --add                  add an entry
+  -c, --createdb             create an empty database
   -v, --verbose              print more information (can be repeated)
   -h, --help                 display this help and exit
   -V, --version              output version information and exit
