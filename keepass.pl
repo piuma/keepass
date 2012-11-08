@@ -345,13 +345,15 @@ sub printEntries() { # $oGroup
 		next;
 	    }
 
-	    print $oEntry->{'title'} . ' - ' . $oEntry->{'username'} . "\n";
-	    if ($oEntry->{'url'} ne '') {
-		print "  -> " . $oEntry->{'url'} . "\n";
-	    }
+	    print "[" . $oEntry->{'title'} . "]\n";
+	    print "   Username: " . $oEntry->{'username'} . "\n";
 	    if ($oEntry->{'comment'} ne '') {
-		print "  (" . $oEntry->{'comment'} . ")\n";
+		print "   Comment : " . $oEntry->{'comment'} . "\n";
 	    }
+	    if ($oEntry->{'url'} ne '') {
+		print "   URL     : " . $oEntry->{'url'} . "\n";
+	    }
+
 	}
     }
 }
