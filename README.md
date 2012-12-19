@@ -3,6 +3,17 @@ keepass
 
 Command line interface to work with KeePass database file. The usage mode is inspired by pwsafe command
 
+Install dependencies
+====================
+
+On Debian/Ubuntu
+```shell
+# aptitude install libterm-readkey-perl libstring-random-perl libfile-keepass-perl xclip
+
+# cpan install Clipboard
+```
+
+
 Command line
 ============
 
