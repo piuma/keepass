@@ -8,9 +8,9 @@ Install dependencies
 
 On Debian/Ubuntu
 ```shell
-# aptitude install libterm-readkey-perl libstring-random-perl libfile-keepass-perl xclip
+aptitude install libterm-readkey-perl libstring-random-perl libfile-keepass-perl xclip
 
-# cpan install Clipboard
+cpan install Clipboard
 ```
 
 
